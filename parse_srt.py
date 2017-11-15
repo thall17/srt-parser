@@ -47,32 +47,34 @@ for root, dirs, files in os.walk(src_dir):
 
     # Iterate directories within root directory:
     for d in dirs:
-        print"d name is " + d
-        full_directory = src_dir + "/" + d + "/"
+        if d != "output":
 
-        # Create csv file named after the current directory:
-        with open(src_dir + "/output/" + d + ".csv", 'wb') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            filewriter.writerow(['Name', 'Question', 'Answer'])
+            print"d name is " + d
+            full_directory = src_dir + "/" + d + "/"
 
-            # Add a row to the csv for every video
-            for filename in os.listdir(src_dir + "/" + d + "/"):
-                full_filename = full_directory + filename
-                print "filename is " + filename
-                if filename.endswith(".srt"):
-                    filename_noext = filename[0:-4]
-                    subs = pysrt.open(full_filename)
-                    transcript = ""
-                    for sub in subs:
-                        text = sub.text
-                        text = clean_sub(text)
-                        print "text = " + text
-                        transcript += text
-                    filewriter.writerow([filename_noext, filename_noext, transcript])
-                    continue
-                else:
-                    continue
+            # Create csv file named after the current directory:
+            with open(src_dir + "/output/" + d + ".csv", 'wb') as csvfile:
+                filewriter = csv.writer(csvfile, delimiter=',',
+                                        quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                filewriter.writerow(['Name', 'Question', 'Answer'])
+
+                # Add a row to the csv for every video
+                for filename in os.listdir(src_dir + "/" + d + "/"):
+                    full_filename = full_directory + filename
+                    print "filename is " + filename
+                    if filename.endswith(".srt"):
+                        filename_noext = filename[0:-4]
+                        subs = pysrt.open(full_filename)
+                        transcript = ""
+                        for sub in subs:
+                            text = sub.text
+                            text = clean_sub(text)
+                            print "text = " + text
+                            transcript += text
+                        filewriter.writerow([filename_noext, filename_noext, transcript])
+                        continue
+                    else:
+                        continue
 
 # print "srt_file = " + str(srt_file)
 # print ""
