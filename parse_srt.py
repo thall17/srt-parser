@@ -2,10 +2,32 @@
 #
 # Copyright 2017 Tim Hall
 
-
 import sys
 import pysrt
 import os
+
+# Helper functions
+
+
+def clean_sub(s):
+    s = remove_carats(s)
+    s = add_spacing(s)
+
+    return s
+
+def add_spacing(s):
+    new_string = s
+    new_string += " "
+    return new_string
+
+
+def remove_carats(s):
+    if s[0:2] == ">>":
+        new_string = s[2:-1]
+    else:
+        new_string = s
+    return new_string
+
 
 # args must be 2 or 3 params long [script_name, src_dir, dest_dir]
 if (len(sys.argv) < 2) or (len(sys.argv) > 3):
@@ -20,8 +42,11 @@ subs = pysrt.open(srt_file)
 
 transcript = ""
 
-for s in subs:
-    transcript += s.text
+for sub in subs:
+    text = sub.text
+    text = clean_sub(text)
+    print "text = " + text
+    transcript += text
 
 print "srt_file = " + str(srt_file)
 print ""
@@ -31,3 +56,6 @@ print "subs = " + str(subs)
 print "Current working dir : %s" % os.getcwd()
 print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
 print 'Script Finished'
+
+
+
