@@ -17,7 +17,7 @@ if (len(sys.argv) < 2) or (len(sys.argv) > 3):
 
 # Helper functions
 def clean_sub(s):
-    s = s.rstrip()
+    s = s.replace("\n", " ")
     s = remove_carats(s)
     s = add_spacing(s)
     return s
@@ -66,9 +66,9 @@ print ""
 print "subs = " + str(subs)
 print "Current working dir : %s" % os.getcwd()
 print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
-print ""
-print "subs[0].text = " + subs[0].text.rstrip()
-print 'Script Finished'
+# print ""
+# print "subs[0].text = " + subs[0].text.replace("\n", "")
+# print 'Script Finished'
 
 
 
