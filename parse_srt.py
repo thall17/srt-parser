@@ -5,6 +5,7 @@
 import sys
 import pysrt
 import os
+from os.path import join, getsize
 import csv
 
 # args must be 2 or 3 params long [script_name, src_dir, dest_dir]
@@ -34,41 +35,46 @@ def remove_carats(s):
         new_string = s
     return new_string
 
-srt_file = sys.argv[1]
-file_name = srt_file[0:-4]
-subs = pysrt.open(srt_file)
+src_dir = sys.argv[1]
 
-transcript = ""
+for root, dirs, files in os.walk(src_dir):
+    print root, "consumes",
+    print sum(getsize(join(root, name)) for name in files),
+    print "bytes in", len(files), "non-directory files"
+    for d in dirs:
+        for filename in d:
+            if filename.endswith(".srt"):
+                filename_noext = filename[0:-4]
+                file_path = os.path.join(src_dir, filename)
+                print "Full file path = " + file_path
+                subs = pysrt.open(file_path)
+                transcript = ""
+                for sub in subs:
+                    text = sub.text
+                    text = clean_sub(text)
+                    print "text = " + text
+                    transcript += text
+                with open(filename_noext + ".csv", 'wb') as csvfile:
+                    filewriter = csv.writer(csvfile, delimiter=',',
+                                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                    filewriter.writerow(['Name', 'Front', 'Back'])
+                    filewriter.writerow([filename_noext, filename_noext, transcript])
+                continue
+            else:
+                continue
 
-for sub in subs:
-    text = sub.text
-    text = clean_sub(text)
-    print "text = " + text
-    transcript += text
-
-# transcript = transcript.rstrip()
-# transcript = transcript.replace(",", ";")
-# transcript = "\"" + transcript + "\""
 
 
 
-with open('Test.csv', 'wb') as csvfile:
-    filewriter = csv.writer(csvfile, delimiter=',',
-                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    filewriter.writerow(['Name', 'Profession', 'Answer'])
-    filewriter.writerow([file_name, file_name, transcript])
 
 
-print "srt_file = " + str(srt_file)
-print ""
-print "transcript = " + transcript
-print ""
-print "subs = " + str(subs)
+# print "srt_file = " + str(srt_file)
+# print ""
+# print "transcript = " + transcript
+# print ""
+# print "subs = " + str(subs)
 print "Current working dir : %s" % os.getcwd()
 print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
-# print ""
-# print "subs[0].text = " + subs[0].text.replace("\n", "")
-# print 'Script Finished'
-
+print "Script Finished."
 
 
