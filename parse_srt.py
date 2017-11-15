@@ -37,44 +37,50 @@ def remove_carats(s):
 
 src_dir = sys.argv[1]
 
+if not os.path.exists(src_dir + "/output"):
+    os.makedirs(src_dir + "/output")
+
 for root, dirs, files in os.walk(src_dir):
     print root, "consumes",
     print sum(getsize(join(root, name)) for name in files),
     print "bytes in", len(files), "non-directory files"
+
+    # Iterate directories within root directory:
     for d in dirs:
-        for filename in d:
-            if filename.endswith(".srt"):
-                filename_noext = filename[0:-4]
-                file_path = os.path.join(src_dir, filename)
-                print "Full file path = " + file_path
-                subs = pysrt.open(file_path)
-                transcript = ""
-                for sub in subs:
-                    text = sub.text
-                    text = clean_sub(text)
-                    print "text = " + text
-                    transcript += text
-                with open(filename_noext + ".csv", 'wb') as csvfile:
-                    filewriter = csv.writer(csvfile, delimiter=',',
-                                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                    filewriter.writerow(['Name', 'Front', 'Back'])
+        print"d name is " + d
+        full_directory = src_dir + "/" + d + "/"
+
+        # Create csv file named after the current directory:
+        with open(src_dir + "/output/" + d + ".csv", 'wb') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            filewriter.writerow(['Name', 'Question', 'Answer'])
+
+            # Add a row to the csv for every video
+            for filename in os.listdir(src_dir + "/" + d + "/"):
+                full_filename = full_directory + filename
+                print "filename is " + filename
+                if filename.endswith(".srt"):
+                    filename_noext = filename[0:-4]
+                    subs = pysrt.open(full_filename)
+                    transcript = ""
+                    for sub in subs:
+                        text = sub.text
+                        text = clean_sub(text)
+                        print "text = " + text
+                        transcript += text
                     filewriter.writerow([filename_noext, filename_noext, transcript])
-                continue
-            else:
-                continue
-
-
-
-
-
+                    continue
+                else:
+                    continue
 
 # print "srt_file = " + str(srt_file)
 # print ""
 # print "transcript = " + transcript
 # print ""
 # print "subs = " + str(subs)
-print "Current working dir : %s" % os.getcwd()
-print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
+# print "Current working dir : %s" % os.getcwd()
+# print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
 print "Script Finished."
 
 
