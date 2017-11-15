@@ -47,14 +47,14 @@ for sub in subs:
     transcript += text
 
 # transcript = transcript.rstrip()
-transcript = transcript.replace(",", ";")
-# transcript = "|" + transcript + "|"
+# transcript = transcript.replace(",", ";")
+# transcript = "\"" + transcript + "\""
 
 
 
 with open('Test.csv', 'wb') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
-                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(['Name', 'Profession', 'Answer'])
     filewriter.writerow([file_name, file_name, transcript])
 
