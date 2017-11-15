@@ -18,7 +18,15 @@ if (len(sys.argv) < 2) or (len(sys.argv) > 3):
 srt_file = sys.argv[1]
 subs = pysrt.open(srt_file)
 
+transcript = ""
+
+for s in subs:
+    transcript += s.text
+
 print "srt_file = " + str(srt_file)
+print ""
+print "transcript = " + transcript
+print ""
 print "subs = " + str(subs)
 print "Current working dir : %s" % os.getcwd()
 print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
