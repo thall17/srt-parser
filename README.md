@@ -16,10 +16,12 @@ This script is designed to read directories full of `.srt` files (specifically w
 ### Create Flashcards
 This is not the traditional use for flashcards, but some may find it helpful to read and re-read course transcripts on their smartphone while on the go and rate themeslves on how well they know the content of each lecture.
 1. After completing the above steps, go to your Brainscape account.
-2. Create a new "class" (name it after the name of the course you're taking).
+2. Create a new "class" (give it the name of the course you're taking).
 ![alt text](images/create_class.png "How to create a Class in Brainscape")
+
 3. Once inside your Brainscape class, click *IMPORT*.
 ![alt text](images/import_deck.png "How to import a Deck in brainscape")
+
 4. Select all of the `.csv` files inside of the "csv" folder.
 5. Once the decks are created, you can edit individual cards in your browser using Brainscape's Advanced Editor to add bolding, underline, make corrections to the transcript text, add images, etc. You can also add more flash cards to your decks later if there are individual small topics and questions you need to improve on.
 ### Import into Notes App
