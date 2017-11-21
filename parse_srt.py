@@ -40,6 +40,12 @@ src_dir = sys.argv[1]
 if not os.path.exists(src_dir + "/output"):
     os.makedirs(src_dir + "/output")
 
+if not os.path.exists(src_dir + "/output/html"):
+    os.makedirs(src_dir + "/output/html")
+
+if not os.path.exists(src_dir + "/output/csv"):
+    os.makedirs(src_dir + "/output/csv")
+
 for root, dirs, files in os.walk(src_dir):
     print root, "consumes",
     print sum(getsize(join(root, name)) for name in files),
@@ -52,8 +58,18 @@ for root, dirs, files in os.walk(src_dir):
             print"d name is " + d
             full_directory = src_dir + "/" + d + "/"
 
+            # Create .rtf files:
+            f = open(src_dir + "/output/html/" + d + ".html", 'wb')
+            f.write("<h1>" + d + "</h1>")
+            f.write("<ul>")
+            f.write("<li>Hello World</li>")
+            f.write("<ul>")
+            f.write("<li>Hello World again (subbullet)!</li>")
+            f.write("</ul>")
+            f.write("</ul>")
+            f.close()
             # Create csv file named after the current directory:
-            with open(src_dir + "/output/" + d + ".csv", 'wb') as csvfile:
+            with open(src_dir + "/output/csv/" + d + ".csv", 'wb') as csvfile:
                 filewriter = csv.writer(csvfile, delimiter=',',
                                         quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 filewriter.writerow(['Name', 'Question', 'Answer'])
