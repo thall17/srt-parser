@@ -5,7 +5,7 @@ This script is designed to read directories full of `.srt` files (specifically w
 
 ## How to Use
 1. Download `parse_srt.py`.
-2. Download all transcripts from your Udacity course. To do so, open a course in a browser, watch any video, click the Folder icon in the left sidebar, then click *"Transcripts Zip File"* to download all transcripts for that course.
+2. Download all transcripts from your Udacity course. To do so, open a course in a browser, watch any video, click the Folder icon in the left sidebar, then click **Transcripts Zip File** to download all transcripts for that course.
 ![alt text](images/download_transcripts.png "How to download transcript files from Udacity")
 3. Open Terminal.
 4. Navigate from the command line to the directory containing the `parse_srt.py` Python script.
