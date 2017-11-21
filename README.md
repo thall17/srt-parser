@@ -21,7 +21,7 @@ This is not the traditional use for flashcards, but some may find it helpful to 
 
 3. Once inside your Brainscape class, click *IMPORT*.
 ![alt text](images/import_deck.png "How to import a Deck in brainscape")
-4. In the import GUI, select all of the `.csv` files inside of the "csv" folder.
+4. In the import GUI, select all of the `.csv` files inside of the "csv" folder. This will create a deck for each lesson in the course. The name of the deck will autohatically be the name of the lesson.
 5. Once the decks are created, you can edit individual cards in your browser using Brainscape's Advanced Editor to add bolding, underline, make corrections to the transcript text, add images, etc. You can also add more flash cards to your decks later if there are individual small topics and questions you need to improve on.
 ### Import into Notes App
 1. Open the notes app of your choosing, as long as it allows importing of .html files.
