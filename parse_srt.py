@@ -58,16 +58,34 @@ for root, dirs, files in os.walk(src_dir):
             print"d name is " + d
             full_directory = src_dir + "/" + d + "/"
 
-            # Create .rtf files:
+            # Create .html files:
             f = open(src_dir + "/output/html/" + d + ".html", 'wb')
             f.write("<h1>" + d + "</h1>")
-            f.write("<ul>")
-            f.write("<li>Hello World</li>")
-            f.write("<ul>")
-            f.write("<li>Hello World again (subbullet)!</li>")
-            f.write("</ul>")
-            f.write("</ul>")
+            for filename in sorted(os.listdir(src_dir + "/" + d + "/")):
+                full_filename = full_directory + filename
+                print "filename is " + filename
+                if filename.endswith(".srt"):
+                    filename_noext = filename[0:-4]
+                    subs = pysrt.open(full_filename)
+                    transcript = ""
+                    for sub in subs:
+                        text = sub.text
+                        text = clean_sub(text)
+                        print "text = " + text
+                        transcript += text
+                    f.write("<ul>")
+                    f.write("<strong><li>" + filename_noext + "</li></strong>")
+                    # Sub-bullet:
+                    f.write("<ul>")
+                    f.write("<li>" + transcript + "</li>")
+                    f.write("</ul>")
+                    # Closing tag to outer bullet:
+                    f.write("</ul>")
+                    continue
+                else:
+                    continue
             f.close()
+
             # Create csv file named after the current directory:
             with open(src_dir + "/output/csv/" + d + ".csv", 'wb') as csvfile:
                 filewriter = csv.writer(csvfile, delimiter=',',
@@ -75,7 +93,7 @@ for root, dirs, files in os.walk(src_dir):
                 filewriter.writerow(['Name', 'Question', 'Answer'])
 
                 # Add a row to the csv for every video
-                for filename in os.listdir(src_dir + "/" + d + "/"):
+                for filename in sorted(os.listdir(src_dir + "/" + d + "/")):
                     full_filename = full_directory + filename
                     print "filename is " + filename
                     if filename.endswith(".srt"):
