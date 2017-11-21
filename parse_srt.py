@@ -61,6 +61,7 @@ for root, dirs, files in os.walk(src_dir):
             # Create .html files:
             f = open(src_dir + "/output/html/" + d + ".html", 'wb')
             f.write("<h1>" + d + "</h1>")
+            f.write("<br>")
             for filename in sorted(os.listdir(src_dir + "/" + d + "/")):
                 full_filename = full_directory + filename
                 print "filename is " + filename
