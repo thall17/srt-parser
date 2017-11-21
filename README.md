@@ -1,11 +1,12 @@
 # SRT Parser
 This script is designed to read directories full of .srt files (specifically with Udacity lectures in mind), and do the following:
-* Output html files, one per lesson, with trascripts in bulleted note format, which can be imported into the Mac Notes app.
-* Output csv files, one per lesson, with transcripts listed in the proper format to be uploaded to Brainscape for automated flashcard generation. The front of the card will be the video title, and the back of the card will be the full transcript from that individual video.
+* Output .html files, one per lesson, with trascripts in bulleted note format, which can be imported into the Mac Notes app (or any notes app you prefer that allows importing of .html files).
+* Output .csv files, one per lesson, with transcripts listed in the proper format to be uploaded to Brainscape for automated flashcard generation. The front of the card will be the video title, and the back of the card will be the full transcript from that individual video.
 Enjoy!
 ## How to Use
 1. Download parse_srt.py.
 2. Download all transcripts from your Udacity course. To do so, open a course in a browser, watch any video, click the Folder icon in the left sidebar, then click "Transcripts Zip File" to download all transcripts for that course.
+![alt text](images/download_transcripts.png "How to download transcript files from Udacity")
 3. Open Terminal.
 4. Navigate from the command line to the directory containing the `parse_srt.py` Python script.
 5. Enter the command `python parse_srt.py <full_path_to_class_transcripts>`.
