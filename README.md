@@ -28,3 +28,5 @@ This is not the traditional use for flashcards, but some may find it helpful to 
 1. Open the notes app of your choosing, as long as it allows importing of .html files.
 2. Import the `.html` files from the "html" directory created by the script into the notes app.
 3. Watch lecture videos and edit the imported notes however you wish (bold certain things, make more sub-bullets, add screenshots from lecture, etc.).
+Here's how the imported `.html` file will look in the Mac Notes app, (video titles will be populated with the actual titles):
+![alt text](images/macnotes_example.png "Mac Notes Import Example")
