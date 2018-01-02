@@ -53,7 +53,7 @@ for root, dirs, files in os.walk(src_dir):
 
     # Iterate directories within root directory:
     for d in dirs:
-        if d != "output":
+        if d != "output" and d != "html" and d != "csv":
 
             print"d name is " + d
             full_directory = src_dir + "/" + d + "/"
@@ -62,6 +62,8 @@ for root, dirs, files in os.walk(src_dir):
             f = open(src_dir + "/output/html/" + d + ".html", 'wb')
             f.write("<h1>" + d + "</h1>")
             f.write("<br>")
+            print "PROBLEM LINE: " + str(src_dir)
+            print "d = " + str(d)
             for filename in sorted(os.listdir(src_dir + "/" + d + "/")):
                 full_filename = full_directory + filename
                 print "filename is " + filename
@@ -119,5 +121,3 @@ for root, dirs, files in os.walk(src_dir):
 # print "Current working dir : %s" % os.getcwd()
 # print "os.path.dirname... is %s" % os.path.dirname(os.path.realpath(sys.argv[0]))
 print "Script Finished."
-
-
