@@ -5,9 +5,9 @@ This script is designed to read directories full of `.srt` files (specifically w
 
 ## How to Use
 1. Download `parse_srt.py`.
-2. Download all transcripts from your Udacity course. To do so, open a course in a browser, watch any video, click the Folder icon in the left sidebar, then click *"Transcripts Zip File"* to download all transcripts for that course.
+2. Download all transcripts from your Udacity course. To do so, open a course in a browser, click any individual video, then click the Folder icon in the left sidebar, then click **Transcripts Zip File** under **Course Resources** to download all transcripts for that course.
 ![alt text](images/download_transcripts.png "How to download transcript files from Udacity")
-3. Open Terminal.
+3. Open your command line/Terminal app.
 4. Navigate from the command line to the directory containing the `parse_srt.py` Python script.
 5. Enter the command `python parse_srt.py <full_path_to_class_transcripts>`.
 6. The script will create a folder called `output` inside of the course transcripts directory. Within that, it will create a "html" directory and a "csv" directory, and output all files to the appropriate folder.
@@ -21,8 +21,7 @@ This is not the traditional use for flashcards, but some may find it helpful to 
 
 3. Once inside your Brainscape class, click *IMPORT*.
 ![alt text](images/import_deck.png "How to import a Deck in brainscape")
-
-4. Select all of the `.csv` files inside of the "csv" folder.
+4. In the import GUI, select all of the `.csv` files inside of the "csv" folder. This will create a deck for each lesson in the course. The name of the deck will autohatically be the name of the lesson.
 5. Once the decks are created, you can edit individual cards in your browser using Brainscape's Advanced Editor to add bolding, underline, make corrections to the transcript text, add images, etc. You can also add more flash cards to your decks later if there are individual small topics and questions you need to improve on.
 ### Import into Notes App
 1. Open the notes app of your choosing, as long as it allows importing of .html files.
