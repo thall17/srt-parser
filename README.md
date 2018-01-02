@@ -1,6 +1,3 @@
-# Update
-Udacity has changed the directory structure of their transcript files, so the script is being updated accordingly. I'll remove this note once the script is ready to use with the new format.
-
 # SRT Parser
 This script is designed to read directories full of `.srt` files (specifically with Udacity lectures in mind), and do the following:
 * Output `.html` files, one per lesson, with trascripts in bulleted note format, which can be imported into the Mac Notes app (or any notes app you prefer that allows importing of `.html` files).
@@ -32,3 +29,7 @@ This is not the traditional use for flashcards, but some may find it helpful to 
 3. Watch lecture videos and edit the imported notes however you wish (bold certain things, make more sub-bullets, add screenshots from lecture, etc.).
 Here's how the imported `.html` file will look in the Mac Notes app, (video titles will be populated with the actual titles):
 ![alt text](images/macnotes_example.png "Mac Notes Import Example")
+
+## Disclaimer
+Most Udacity courses organize their transcripts into folders for each lesson. In the rare case that it does not, you'll need to do this step manually, either by downloading each lesson individually, or downloading all and then organizing into directories.
+
