@@ -7,6 +7,9 @@ This script is designed to read directories full of `.srt` files (specifically w
 1. Download `parse_srt.py`.
 2. Download all transcripts from your Udacity course. To do so, open a course in a browser, click any individual video, then click the Folder icon in the left sidebar, then click **Transcripts Zip File** under **Course Resources** to download all transcripts for that course.
 ![alt text](images/download_transcripts.png "How to download transcript files from Udacity")
+
+**Note**: Most Udacity courses organize their transcripts into folders, one for each lesson, which is what this script assumes. In the rare case that your course doesn't do this, you'll need to do this step manually, either by downloading each lesson individually, or downloading all videos and then organizing into directories, one for each lesson.
+
 3. Open your command line/Terminal app.
 4. Navigate from the command line to the directory containing the `parse_srt.py` Python script.
 5. Enter the command `python parse_srt.py <full_path_to_class_transcripts>`.
@@ -29,7 +32,4 @@ This is not the traditional use for flashcards, but some may find it helpful to 
 3. Watch lecture videos and edit the imported notes however you wish (bold certain things, make more sub-bullets, add screenshots from lecture, etc.).
 Here's how the imported `.html` file will look in the Mac Notes app, (video titles will be populated with the actual titles):
 ![alt text](images/macnotes_example.png "Mac Notes Import Example")
-
-## Disclaimer
-Most Udacity courses organize their transcripts into folders for each lesson. In the rare case that it does not, you'll need to do this step manually, either by downloading each lesson individually, or downloading all and then organizing into directories.
 
