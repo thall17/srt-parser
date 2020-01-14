@@ -35,6 +35,10 @@ def remove_carats(s):
         new_string = s
     return new_string
 
+def format_text(text):
+    text = text.replace(u"\u2019", "-").replace(u'\xe9', "e").replace(u"\u201c", "\"").replace(u'\u201d', "\"").replace(u'\u2013', "-").replace(u'\uff1f', "?").replace(u'\u2026', "...").replace(u'\uff0c', ",")
+    return text
+
 src_dir = sys.argv[1]
 
 if not os.path.exists(src_dir + "/output"):
@@ -76,7 +80,8 @@ for root, dirs, files in os.walk(src_dir):
                         text = clean_sub(text)
                         print "text = " + text
                         transcript += text
-                    transcript = transcript.replace(u"\u2019", "-").replace(u'\xe9', "e")
+                    transcript = format_text(transcript)
+                    # transcript = transcript.encode("utf8")
                     # transcript = transcript.encode("utf8")
                     f.write("<ul>")
                     f.write("<strong><li>" + filename_noext + "</li></strong>")
@@ -110,7 +115,7 @@ for root, dirs, files in os.walk(src_dir):
                             text = clean_sub(text)
                             print "text = " + text
                             transcript += text
-                        transcript = transcript.replace(u"\u2019", "-").replace(u'\xe9', "e")
+                            transcript = format_text(transcript)
                         filewriter.writerow([filename_noext, filename_noext, transcript])
                         continue
                     else:
