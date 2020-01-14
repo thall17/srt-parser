@@ -76,6 +76,8 @@ for root, dirs, files in os.walk(src_dir):
                         text = clean_sub(text)
                         print "text = " + text
                         transcript += text
+                    transcript = transcript.replace(u"\u2019", "-").replace(u'\xe9', "e")
+                    # transcript = transcript.encode("utf8")
                     f.write("<ul>")
                     f.write("<strong><li>" + filename_noext + "</li></strong>")
                     # Sub-bullet:
@@ -108,6 +110,7 @@ for root, dirs, files in os.walk(src_dir):
                             text = clean_sub(text)
                             print "text = " + text
                             transcript += text
+                        transcript = transcript.replace(u"\u2019", "-").replace(u'\xe9', "e")
                         filewriter.writerow([filename_noext, filename_noext, transcript])
                         continue
                     else:
